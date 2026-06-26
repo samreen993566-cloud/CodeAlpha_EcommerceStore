@@ -8,8 +8,15 @@ function updateNavbar() {
     navLinks.innerHTML = `
       <a href="index.html">Home</a>
       <a href="cart.html">Cart 🛍️</a>
-      <span style="color:white; margin-left:1.5rem;">Hi, ${name}!</span>
+      <a href="profile.html" style="color:white; margin-left:1.5rem;">Hi, ${name}! 👤</a>
       <a href="#" onclick="logout()" style="margin-left:1.5rem;">Logout</a>
+    `;
+  } else {
+    navLinks.innerHTML = `
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart 🛍️</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
     `;
   }
 }
@@ -17,6 +24,7 @@ function updateNavbar() {
 function logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('name');
+  localStorage.removeItem('email');
   window.location.href = 'index.html';
 }
 
@@ -54,7 +62,8 @@ async function login() {
   if (res.ok) {
     localStorage.setItem('token', data.token);
     localStorage.setItem('name', data.name);
-    window.location.replace('index.html');   // ✅ SIRF YEH
+    localStorage.setItem('email', email);
+    window.location.replace('index.html');
   } else {
     alert(data.message);
   }
