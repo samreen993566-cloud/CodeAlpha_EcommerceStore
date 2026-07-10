@@ -1,3 +1,5 @@
+// API variable config.js se aa raha hai (usko is page pe pehle load karna zaroori hai)
+
 function loadCart() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const cartItems = document.getElementById('cart-items');
@@ -52,7 +54,7 @@ async function checkout() {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const res = await fetch(`${API}/orders`, {
+  const res = await fetch(`${API}/api/orders`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

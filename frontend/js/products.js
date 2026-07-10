@@ -1,8 +1,5 @@
-const API = 'http://localhost:8080/api';
-
-// Sab products fetch karo
 async function loadProducts() {
-  const res = await fetch(`${API}/products`);
+  const res = await fetch(`${API}/api/products`);
   const products = await res.json();
 
   const grid = document.getElementById('products-grid');
